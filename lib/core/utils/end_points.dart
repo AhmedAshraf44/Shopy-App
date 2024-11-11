@@ -1,3 +1,4 @@
+const String kBaseUrl = 'https://student.valuxapps.com/api/';
 const kLogin = 'login';
 
 const kHomeData = 'home';

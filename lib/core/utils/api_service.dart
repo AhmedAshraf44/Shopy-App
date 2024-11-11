@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:shopy_app/core/utils/end_points.dart';
 
 class ApiService {
   final Dio dio;
-  String baseUrl = 'https://student.valuxapps.com/api/';
+
   ApiService(this.dio);
 
   Future<Map<String, dynamic>> post({
@@ -10,7 +11,7 @@ class ApiService {
     required Map<String, String>? data,
     String? token,
   }) async {
-    var response = await dio.post('$baseUrl$endPoint',
+    var response = await dio.post('$kBaseUrl$endPoint',
         data: data,
         options: Options(headers: {
           'Authorization': token,
@@ -25,7 +26,7 @@ class ApiService {
     //  required Map<String, String>? data,
     required String? token,
   }) async {
-    var response = await dio.get('$baseUrl$endPoint',
+    var response = await dio.get('$kBaseUrl$endPoint',
         options: Options(headers: {
           'Authorization': token,
           'Content-Type': 'application/json',
@@ -39,7 +40,7 @@ class ApiService {
     //  required Map<String, String>? data,
     required String? token,
   }) async {
-    var response = await dio.delete('$baseUrl$endPoint',
+    var response = await dio.delete('$kBaseUrl$endPoint',
         options: Options(headers: {
           'Authorization': token,
           'Content-Type': 'application/json',
@@ -53,7 +54,7 @@ class ApiService {
     //  required Map<String, String>? data,
     required String? token,
   }) async {
-    var response = await dio.put('$baseUrl$endPoint',
+    var response = await dio.put('$kBaseUrl$endPoint',
         options: Options(headers: {
           'Authorization': token,
           'Content-Type': 'application/json',

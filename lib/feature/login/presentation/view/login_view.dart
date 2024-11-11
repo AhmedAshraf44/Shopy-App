@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:shopy_app/constants.dart';
 import 'package:shopy_app/core/utils/app_router.dart';
 import 'package:shopy_app/core/utils/app_styles.dart';
-import 'package:shopy_app/core/utils/widgets/cache_helper.dart';
+import 'package:shopy_app/core/utils/cache_helper.dart';
 import 'package:shopy_app/feature/login/data/repos/login_repo_impl.dart';
 import 'package:shopy_app/feature/login/presentation/manger/login_cubit/login_cubit.dart';
 import 'package:shopy_app/feature/login/presentation/manger/login_cubit/login_state.dart';
@@ -31,7 +31,7 @@ class LoginView extends StatelessWidget {
                 } else {
                   showToast(text: state.model.message, color: Colors.green);
                   CacheHelper.setData(
-                      key: 'token', value: state.model.data!.token);
+                      key: kToken, value: state.model.data!.token);
                   GoRouter.of(context).push(AppRouter.kHomeLayoutView);
                 }
               }
