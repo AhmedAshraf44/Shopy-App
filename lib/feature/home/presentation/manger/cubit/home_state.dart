@@ -2,7 +2,7 @@ part of 'home_cubit.dart';
 
 sealed class HomeState {}
 
-final class HomeInitial extends HomeState {}
+final class HomeInitialState extends HomeState {}
 
 final class HomeLoadingState extends HomeState {}
 
@@ -13,3 +13,5 @@ final class HomeFailureState extends HomeState {
 
   HomeFailureState(this.errMessage);
 }
+
+final class HomeChnageIndexState extends HomeState {}

@@ -8,8 +8,8 @@ import 'package:shopy_app/feature/home/data/repos/home_repo_impl.dart';
 import 'package:shopy_app/feature/home/presentation/manger/cubit/home_cubit.dart';
 import 'package:shopy_app/feature/layout/presentation/manger/cubit/app_cubit.dart';
 
-class HomeLayoutView extends StatelessWidget {
-  const HomeLayoutView({super.key});
+class AppLayoutView extends StatelessWidget {
+  const AppLayoutView({super.key});
 
   @override
   Widget build(BuildContext context) {

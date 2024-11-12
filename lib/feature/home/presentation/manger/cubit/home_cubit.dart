@@ -4,10 +4,17 @@ import 'package:shopy_app/feature/home/data/repos/home_repo.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit(this.homeRepo) : super(HomeInitial());
+  HomeCubit(this.homeRepo) : super(HomeInitialState());
   HomeModel? homeModel;
   static HomeCubit get(context) => BlocProvider.of(context);
   final HomeRepo homeRepo;
+  int currentIndex = 0;
+
+  void changeCurrentIndex(index) {
+    currentIndex = index;
+    emit(HomeChnageIndexState());
+  }
+
   Future<void> getHomeData() async {
     emit(HomeLoadingState());
     var result = await homeRepo.getHomeData();

@@ -3,7 +3,7 @@ import 'package:shopy_app/feature/login/presentation/view/login_view.dart';
 import 'package:shopy_app/feature/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:shopy_app/feature/search/presentation/view/search_view.dart';
 
-import '../../feature/layout/presentation/view/home_layout_view.dart';
+import '../../feature/layout/presentation/view/app_layout_view.dart';
 
 abstract class AppRouter {
   static const kLoginView = '/LoginView';
@@ -22,7 +22,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kHomeLayoutView,
-        builder: (context, state) => const HomeLayoutView(),
+        builder: (context, state) => const AppLayoutView(),
       ),
       GoRoute(
         path: kSearchView,
