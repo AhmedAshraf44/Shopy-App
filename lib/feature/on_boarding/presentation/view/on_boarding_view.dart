@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:shopy_app/constants.dart';
 import 'package:shopy_app/core/utils/app_images.dart';
 import 'package:shopy_app/core/utils/app_router.dart';
+import 'package:shopy_app/core/utils/cache_helper.dart';
 import 'package:shopy_app/feature/on_boarding/presentation/view/widgets/build_page_view_item.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -70,6 +71,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               children: [
                 TextButton(
                     onPressed: () {
+                      CacheHelper.setData(key: 'onBoarding', value: true);
                       GoRouter.of(context).push(AppRouter.kLoginView);
                     },
                     child: const Text(
@@ -88,11 +90,12 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                     dotWidth: 10,
                     activeDotColor: kPrimaryColor,
                     spacing: 5,
-                    expansionFactor: 4,
+                    expansionFactor: 3,
                   ),
                 ),
                 FloatingActionButton(
                   onPressed: () {
+                    CacheHelper.setData(key: 'onBoarding', value: true);
                     if (isLast) {
                       GoRouter.of(context).push(AppRouter.kLoginView);
                     } else {

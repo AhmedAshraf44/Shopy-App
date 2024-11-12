@@ -1,10 +1,9 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shopy_app/core/utils/api_service.dart';
 import 'package:shopy_app/core/utils/app_router.dart';
 import 'package:shopy_app/core/utils/app_styles.dart';
+import 'package:shopy_app/core/utils/service_locator.dart';
 import 'package:shopy_app/feature/home/data/repos/home_repo_impl.dart';
 import 'package:shopy_app/feature/home/presentation/manger/cubit/home_cubit.dart';
 import 'package:shopy_app/feature/layout/presentation/manger/cubit/app_cubit.dart';
@@ -21,7 +20,7 @@ class HomeLayoutView extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) =>
-              HomeCubit(HomeRepoImpl(ApiService(Dio())))..getHomeData(),
+              HomeCubit(getIt.get<HomeRepoImpl>())..getHomeData(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppState>(

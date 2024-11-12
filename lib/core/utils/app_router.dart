@@ -10,22 +10,24 @@ abstract class AppRouter {
   static const kHomeLayoutView = '/HomeLayoutView';
   static const kSearchView = '/SearchView';
 
-  static final router = GoRouter(routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const OnBoardingView(),
-    ),
-    GoRoute(
-      path: kLoginView,
-      builder: (context, state) => const LoginView(),
-    ),
-    GoRoute(
-      path: kHomeLayoutView,
-      builder: (context, state) => const HomeLayoutView(),
-    ),
-    GoRoute(
-      path: kSearchView,
-      builder: (context, state) => const SearchView(),
-    ),
-  ]);
+  static GoRouter router({required String initialRoute}) {
+    return GoRouter(initialLocation: initialRoute, routes: [
+      GoRoute(
+        path: '/',
+        builder: (context, state) => const OnBoardingView(),
+      ),
+      GoRoute(
+        path: kLoginView,
+        builder: (context, state) => const LoginView(),
+      ),
+      GoRoute(
+        path: kHomeLayoutView,
+        builder: (context, state) => const HomeLayoutView(),
+      ),
+      GoRoute(
+        path: kSearchView,
+        builder: (context, state) => const SearchView(),
+      ),
+    ]);
+  }
 }

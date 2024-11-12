@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -6,11 +5,11 @@ import 'package:shopy_app/constants.dart';
 import 'package:shopy_app/core/utils/app_router.dart';
 import 'package:shopy_app/core/utils/app_styles.dart';
 import 'package:shopy_app/core/utils/cache_helper.dart';
+import 'package:shopy_app/core/utils/service_locator.dart';
 import 'package:shopy_app/feature/login/data/repos/login_repo_impl.dart';
 import 'package:shopy_app/feature/login/presentation/manger/login_cubit/login_cubit.dart';
 import 'package:shopy_app/feature/login/presentation/manger/login_cubit/login_state.dart';
 import '../../../../core/functions/show_toast.dart';
-import '../../../../core/utils/api_service.dart';
 import '../../../../core/utils/widgets/custom_button.dart';
 import '../../../../core/utils/widgets/custom_text_form_field.dart';
 
@@ -21,7 +20,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => LoginCubit(LoginRepoImpl(ApiService(Dio()))),
+        create: (context) => LoginCubit(getIt.get<LoginRepoImpl>()),
         child: BlocConsumer<LoginCubit, LoginState>(
           listener: (context, state) {
             if (state is LoginSuccessState) {
