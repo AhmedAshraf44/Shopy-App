@@ -9,7 +9,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   await CacheHelper.init();
-  String? token = CacheHelper.getData(key: kToken);
+  token = CacheHelper.getData(key: 'token') ?? '';
   print('token : $token');
   runApp(const ShopyApp());
 }

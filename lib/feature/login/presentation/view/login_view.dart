@@ -31,7 +31,7 @@ class LoginView extends StatelessWidget {
                 } else {
                   showToast(text: state.model.message, color: Colors.green);
                   CacheHelper.setData(
-                      key: kToken, value: state.model.data!.token);
+                      key: 'token', value: state.model.data!.token);
                   GoRouter.of(context).push(AppRouter.kHomeLayoutView);
                 }
               }

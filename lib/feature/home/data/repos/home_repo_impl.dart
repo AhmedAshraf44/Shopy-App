@@ -7,8 +7,6 @@ import 'package:shopy_app/core/utils/end_points.dart';
 import 'package:shopy_app/feature/home/data/model/home_model.dart';
 import 'package:shopy_app/feature/home/data/repos/home_repo.dart';
 
-import '../../../../core/utils/cache_helper.dart';
-
 class HomeRepoImpl extends HomeRepo {
   final ApiService apiService;
 
@@ -16,8 +14,7 @@ class HomeRepoImpl extends HomeRepo {
   @override
   Future<Either<Failure, HomeModel>> getHomeData() async {
     try {
-      var result = await apiService.get(
-          endPoint: kHomeData, token: CacheHelper.getData(key: kToken));
+      var result = await apiService.get(endPoint: kHomeData, token: token);
       return right(HomeModel.fromJson(result));
     } catch (e) {
       if (e is DioException) {
