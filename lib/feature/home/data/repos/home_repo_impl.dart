@@ -4,7 +4,7 @@ import 'package:shopy_app/constants.dart';
 import 'package:shopy_app/core/errors/failure.dart';
 import 'package:shopy_app/core/utils/api_service.dart';
 import 'package:shopy_app/core/utils/end_points.dart';
-import 'package:shopy_app/feature/home/data/model/gategories_model/gategories_model.dart';
+import 'package:shopy_app/feature/home/data/model/categories_model/categories_model.dart';
 import 'package:shopy_app/feature/home/data/model/home_model/home_model.dart';
 import 'package:shopy_app/feature/home/data/repos/home_repo.dart';
 
@@ -26,10 +26,10 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Failure, GategoriesModel>> getGategories() async {
+  Future<Either<Failure, CategoriesModel>> getGategories() async {
     try {
       var result = await apiService.get(endPoint: kGetCategories);
-      return right(GategoriesModel.fromJson(result));
+      return right(CategoriesModel.fromJson(result));
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.formDioError(e));

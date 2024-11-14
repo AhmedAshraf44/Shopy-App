@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../data/model/home_model/product_model.dart';

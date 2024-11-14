@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shopy_app/feature/home/presentation/view/widgets/custom_gategories.dart';
+import 'package:shopy_app/feature/home/presentation/view/widgets/custom_categories.dart';
 
-import '../../../data/model/gategories_model/gategories_model.dart';
+import '../../../data/model/categories_model/categories_model.dart';
 
-class BuildListViewGategories extends StatelessWidget {
-  const BuildListViewGategories({super.key, required this.gategories});
-  final GategoriesModel gategories;
+class BuildListViewCategories extends StatelessWidget {
+  const BuildListViewCategories({super.key, required this.gategories});
+  final CategoriesModel gategories;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class BuildListViewGategories extends StatelessWidget {
       child: ListView.separated(
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) => CustomGategory(
+          itemBuilder: (context, index) => CustomCategories(
                 item: gategories.data.data[index],
               ),
           separatorBuilder: (context, index) => const SizedBox(

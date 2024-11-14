@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_styles.dart';
-import '../../../data/model/gategories_model/gategories_data_item_model.dart';
+import '../../../data/model/categories_model/categories_data_item_model.dart';
 
-class CustomGategory extends StatelessWidget {
-  const CustomGategory({super.key, required this.item});
-  final GategoriesDataItemModel item;
+class CustomCategories extends StatelessWidget {
+  const CustomCategories({super.key, required this.item});
+  final CategoriesDataItemModel item;
   @override
   Widget build(BuildContext context) {
     return Container(
