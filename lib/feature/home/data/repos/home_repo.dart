@@ -6,5 +6,5 @@ import '../model/categories_model/categories_model.dart';
 
 abstract class HomeRepo {
   Future<Either<Failure, HomeModel>> getHomeData();
-  Future<Either<Failure, CategoriesModel>> getGategories();
+  Future<Either<Failure, CategoriesModel>> getCategories();
 }

@@ -7,7 +7,7 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this.homeRepo) : super(HomeInitialState());
   HomeModel? homeModel;
-  CategoriesModel? gategoriesModel;
+  CategoriesModel? categoriesModel;
   static HomeCubit get(context) => BlocProvider.of(context);
   final HomeRepo homeRepo;
   int currentIndex = 0;
@@ -31,14 +31,14 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-  Future<void> getGategories() async {
-    emit(GategoriesLoadingState());
-    var result = await homeRepo.getGategories();
+  Future<void> getCategories() async {
+    emit(CategoriesLoadingState());
+    var result = await homeRepo.getCategories();
     result.fold(
-      (failure) => emit(GategoriesFailureState(failure.errorMessage)),
-      (gategories) {
-        gategoriesModel = gategories;
-        emit(GategoriesSucessState());
+      (failure) => emit(CategoriesFailureState(failure.errorMessage)),
+      (categories) {
+        categoriesModel = categories;
+        emit(CategoriesSucessState());
       },
     );
   }

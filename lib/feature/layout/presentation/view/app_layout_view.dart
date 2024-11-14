@@ -21,7 +21,7 @@ class AppLayoutView extends StatelessWidget {
         BlocProvider(
           create: (context) => HomeCubit(getIt.get<HomeRepoImpl>())
             ..getHomeData()
-            ..getGategories(),
+            ..getCategories(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppState>(

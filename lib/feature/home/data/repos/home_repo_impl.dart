@@ -26,7 +26,7 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Failure, CategoriesModel>> getGategories() async {
+  Future<Either<Failure, CategoriesModel>> getCategories() async {
     try {
       var result = await apiService.get(endPoint: kGetCategories);
       return right(CategoriesModel.fromJson(result));

@@ -16,7 +16,7 @@ class CategoriesView extends StatelessWidget {
       builder: (context, state) {
         var cubit = HomeCubit.get(context);
         return ConditionalBuilder(
-          condition: cubit.gategoriesModel != null,
+          condition: cubit.categoriesModel != null,
           builder: (context) => BuildListViewCategoriesView(cubit: cubit),
           fallback: (context) => const Center(
             child: CircularProgressIndicator(),
@@ -40,10 +40,10 @@ class BuildListViewCategoriesView extends StatelessWidget {
     return ListView.separated(
       physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) => BuildCategoriesView(
-        item: cubit.gategoriesModel!.data.data[index],
+        item: cubit.categoriesModel!.data.data[index],
       ),
       separatorBuilder: (context, index) => const MyDivider(),
-      itemCount: cubit.gategoriesModel!.data.data.length,
+      itemCount: cubit.categoriesModel!.data.data.length,
     );
   }
 }

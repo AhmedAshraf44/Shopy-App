@@ -4,8 +4,8 @@ import 'package:shopy_app/feature/home/presentation/view/widgets/custom_categori
 import '../../../data/model/categories_model/categories_model.dart';
 
 class BuildListViewCategories extends StatelessWidget {
-  const BuildListViewCategories({super.key, required this.gategories});
-  final CategoriesModel gategories;
+  const BuildListViewCategories({super.key, required this.categories});
+  final CategoriesModel categories;
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +15,12 @@ class BuildListViewCategories extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) => CustomCategories(
-                item: gategories.data.data[index],
+                item: categories.data.data[index],
               ),
           separatorBuilder: (context, index) => const SizedBox(
                 width: 10,
               ),
-          itemCount: gategories.data.data.length),
+          itemCount: categories.data.data.length),
     );
   }
 }

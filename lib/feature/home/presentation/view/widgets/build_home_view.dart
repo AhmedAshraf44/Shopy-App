@@ -8,9 +8,9 @@ import '../../../data/model/home_model/home_model.dart';
 
 class BuildHomeView extends StatelessWidget {
   const BuildHomeView(
-      {super.key, required this.item, required this.gategories});
+      {super.key, required this.item, required this.categories});
   final HomeModel item;
-  final CategoriesModel gategories;
+  final CategoriesModel categories;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -29,13 +29,13 @@ class BuildHomeView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Gategories',
+                  'Categories',
                   style: AppStyles.textStyle20,
                 ),
                 const SizedBox(
                   height: 15,
                 ),
-                BuildListViewCategories(gategories: gategories),
+                BuildListViewCategories(categories: categories),
                 const SizedBox(
                   height: 30,
                 ),
