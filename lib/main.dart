@@ -45,6 +45,8 @@ ThemeData appThemeData() {
         color: Colors.white,
       ),
       fontFamily: 'Inter',
+      progressIndicatorTheme:
+          const ProgressIndicatorThemeData(color: kPrimaryColor),
       scaffoldBackgroundColor: Colors.white,
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
