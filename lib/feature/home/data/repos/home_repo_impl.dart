@@ -4,7 +4,8 @@ import 'package:shopy_app/constants.dart';
 import 'package:shopy_app/core/errors/failure.dart';
 import 'package:shopy_app/core/utils/api_service.dart';
 import 'package:shopy_app/core/utils/end_points.dart';
-import 'package:shopy_app/feature/home/data/model/home_model.dart';
+import 'package:shopy_app/feature/home/data/model/gategories_model/gategories_model.dart';
+import 'package:shopy_app/feature/home/data/model/home_model/home_model.dart';
 import 'package:shopy_app/feature/home/data/repos/home_repo.dart';
 
 class HomeRepoImpl extends HomeRepo {
@@ -22,5 +23,11 @@ class HomeRepoImpl extends HomeRepo {
       }
       return left(ServerFailure(e.toString()));
     }
+  }
+
+  @override
+  Future<Either<Failure, GategoriesModel>> getGategories() {
+    // TODO: implegetGategoriesment
+    throw UnimplementedError();
   }
 }

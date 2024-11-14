@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
-import '../../../data/model/home_model.dart';
+import '../../../data/model/home_model/home_model.dart';
 import '../../manger/cubit/home_cubit.dart';
 
 class BuildCarouselSliderAndIndicator extends StatelessWidget {

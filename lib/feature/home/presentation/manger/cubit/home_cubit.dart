@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopy_app/feature/home/data/model/home_model.dart';
+import 'package:shopy_app/feature/home/data/model/home_model/home_model.dart';
 import 'package:shopy_app/feature/home/data/repos/home_repo.dart';
 part 'home_state.dart';
 

@@ -1,5 +1,5 @@
-import 'package:shopy_app/feature/home/data/model/banner_model.dart';
-import 'package:shopy_app/feature/home/data/model/product_model.dart';
+import 'package:shopy_app/feature/home/data/model/home_model/banner_model.dart';
+import 'package:shopy_app/feature/home/data/model/home_model/product_model.dart';
 
 class HomeDataModel {
   final List<BannerModel> banners;

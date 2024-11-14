@@ -1,4 +1,4 @@
-import 'package:shopy_app/feature/home/data/model/home_data_model.dart';
+import 'package:shopy_app/feature/home/data/model/home_model/home_data_model.dart';
 
 class HomeModel {
   final bool status;
