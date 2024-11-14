@@ -24,7 +24,7 @@ class ApiService {
   Future<Map<String, dynamic>> get({
     required String endPoint,
     //  required Map<String, String>? data,
-    required String? token,
+    String? token,
   }) async {
     var response = await _dio.get('$kBaseUrl$endPoint',
         options: Options(headers: {

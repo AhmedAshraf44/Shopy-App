@@ -48,7 +48,7 @@ class BuildCarouselSliderAndIndicator extends StatelessWidget {
                   radius: cubit.currentIndex == index ? 6 : 5,
                   backgroundColor: cubit.currentIndex == index
                       ? kPrimaryColor
-                      : Colors.grey[400],
+                      : Colors.grey[350],
                 ),
               ),
             ),

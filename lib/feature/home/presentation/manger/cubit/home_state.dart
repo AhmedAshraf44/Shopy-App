@@ -14,4 +14,14 @@ final class HomeFailureState extends HomeState {
   HomeFailureState(this.errMessage);
 }
 
+final class GategoriesLoadingState extends HomeState {}
+
+final class GategoriesSucessState extends HomeState {}
+
+final class GategoriesFailureState extends HomeState {
+  final String errMessage;
+
+  GategoriesFailureState(this.errMessage);
+}
+
 final class HomeChnageIndexState extends HomeState {}

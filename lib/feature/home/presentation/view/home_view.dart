@@ -11,10 +11,13 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
+        var cubit = HomeCubit.get(context);
         return ConditionalBuilder(
-          condition: state is! HomeLoadingState,
+          condition: cubit.homeModel != null && cubit.gategoriesModel != null,
+          // state is! HomeLoadingState,
           builder: (context) => BuildHomeView(
-            item: HomeCubit.get(context).homeModel!,
+            item: cubit.homeModel!,
+            gategories: cubit.gategoriesModel!,
           ),
           fallback: (context) =>
               const Center(child: CircularProgressIndicator()),

@@ -26,8 +26,15 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Failure, GategoriesModel>> getGategories() {
-    // TODO: implegetGategoriesment
-    throw UnimplementedError();
+  Future<Either<Failure, GategoriesModel>> getGategories() async {
+    try {
+      var result = await apiService.get(endPoint: kGetCategories);
+      return right(GategoriesModel.fromJson(result));
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.formDioError(e));
+      }
+      return Left(ServerFailure(e.toString()));
+    }
   }
 }
