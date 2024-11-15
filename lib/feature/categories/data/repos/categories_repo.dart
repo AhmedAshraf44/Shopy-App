@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:shopy_app/core/errors/failure.dart';
 
-import '../../../home/data/model/categories_model/categories_model.dart';
+import '../models/categories_details_model.dart';
 
 abstract class CategoriesRepo {
-  Future<Either<Failure, CategoriesModel>> getCategoryDetails(
+  Future<Either<Failure, CategoriesDetailsModel>> getCategoryDetails(
       {required int id});
 }
