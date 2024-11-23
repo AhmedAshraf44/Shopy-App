@@ -67,7 +67,7 @@ class CustomProduct extends StatelessWidget {
                       onPressed: () {},
                       icon: CircleAvatar(
                         radius: 15,
-                        backgroundColor: Colors.grey,
+                        backgroundColor: Colors.grey[350],
                         child: const Icon(
                           color: Colors.white,
                           Icons.favorite_border,

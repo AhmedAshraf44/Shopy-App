@@ -1,9 +1,9 @@
 import 'package:go_router/go_router.dart';
-import 'package:shopy_app/feature/categories/presenattion/view/categories_Details_view.dart';
 import 'package:shopy_app/feature/login/presentation/view/login_view.dart';
 import 'package:shopy_app/feature/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:shopy_app/feature/search/presentation/view/search_view.dart';
 
+import '../../feature/categories/presentation/view/categories_details_view.dart';
 import '../../feature/layout/presentation/view/app_layout_view.dart';
 
 abstract class AppRouter {

@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:shopy_app/core/utils/app_router.dart';
 import 'package:shopy_app/core/utils/app_styles.dart';
 import 'package:shopy_app/core/utils/service_locator.dart';
+import 'package:shopy_app/feature/favorites/data/repos/favorites_repo_impl.dart';
+import 'package:shopy_app/feature/favorites/presentation/manger/cubit/favorites_cubit.dart';
 import 'package:shopy_app/feature/home/data/repos/home_repo_impl.dart';
 import 'package:shopy_app/feature/home/presentation/manger/cubit/home_cubit.dart';
 import 'package:shopy_app/feature/layout/presentation/manger/cubit/app_cubit.dart';
@@ -22,6 +24,11 @@ class AppLayoutView extends StatelessWidget {
           create: (context) => HomeCubit(getIt.get<HomeRepoImpl>())
             ..getHomeData()
             ..getCategories(),
+        ),
+        BlocProvider(
+          create: (context) => FavoritesCubit(
+            getIt.get<FavoritesRepoImpl>(),
+          )..getFavorites(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppState>(
