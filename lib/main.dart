@@ -12,6 +12,7 @@ void main() async {
   setupServiceLocator();
   await CacheHelper.init();
   token = CacheHelper.getData(key: 'token') ?? '';
+  print(token);
   bool? onBoarding = CacheHelper.getData(key: 'onBoarding') ?? false;
   late String initialRoute;
   if (onBoarding != null) {

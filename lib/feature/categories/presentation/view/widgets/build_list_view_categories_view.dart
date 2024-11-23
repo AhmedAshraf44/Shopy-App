@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shopy_app/feature/categories/presenattion/view/widgets/build_categories_view.dart';
-import 'package:shopy_app/feature/categories/presenattion/view/widgets/my_divider.dart';
+import 'package:shopy_app/feature/categories/presentation/view/widgets/build_categories_view.dart';
+import 'package:shopy_app/feature/categories/presentation/view/widgets/my_divider.dart';
 
 import '../../../../home/presentation/manger/cubit/home_cubit.dart';
 

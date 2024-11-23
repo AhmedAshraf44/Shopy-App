@@ -63,12 +63,18 @@ class CustomProduct extends StatelessWidget {
                       ),
                     const Spacer(),
                     IconButton(
-                        padding: EdgeInsets.zero,
-                        onPressed: () {},
-                        icon: const Icon(
+//padding: EdgeInsets.zero,
+                      onPressed: () {},
+                      icon: CircleAvatar(
+                        radius: 15,
+                        backgroundColor: Colors.grey,
+                        child: const Icon(
+                          color: Colors.white,
                           Icons.favorite_border,
                           // size: 14,
-                        ))
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ],

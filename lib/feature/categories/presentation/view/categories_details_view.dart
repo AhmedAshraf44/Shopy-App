@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopy_app/core/utils/app_styles.dart';
 import 'package:shopy_app/core/utils/service_locator.dart';
-import 'package:shopy_app/feature/categories/presenattion/manger/cubit/categories_details_cubit.dart';
 import '../../../home/presentation/view/widgets/custom_product.dart';
 import '../../data/repos/categories_repo_impl.dart';
+import '../manger/cubit/categories_details_cubit.dart';
 
 class CategoriesDetailsView extends StatelessWidget {
   const CategoriesDetailsView({super.key, required this.id});
