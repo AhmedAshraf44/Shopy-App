@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopy_app/feature/favorites/presentation/manger/cubit/favorites_cubit.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../data/model/home_model/product_model.dart';
@@ -62,9 +64,15 @@ class CustomProduct extends StatelessWidget {
                             decoration: TextDecoration.lineThrough),
                       ),
                     const Spacer(),
+                    // BlocBuilder<FavoritesCubit, FavoritesState>(
+                    //   builder: (context, state) {
+                    //return
                     IconButton(
-//padding: EdgeInsets.zero,
-                      onPressed: () {},
+                      onPressed: () {
+                        // FavoritesCubit.get(context)
+                        //     .changeFavorites(productId: item.id);
+                        // print('sucess ${item.id}');
+                      },
                       icon: CircleAvatar(
                         radius: 15,
                         backgroundColor: Colors.grey[350],
@@ -74,6 +82,8 @@ class CustomProduct extends StatelessWidget {
                           // size: 14,
                         ),
                       ),
+                      //  );
+                      // },
                     ),
                   ],
                 ),

@@ -8,7 +8,7 @@ class ApiService {
 
   Future<Map<String, dynamic>> post({
     required String endPoint,
-    required Map<String, String>? data,
+    required Map<String, dynamic>? data,
     String? token,
   }) async {
     var response = await _dio.post('$kBaseUrl$endPoint',

@@ -3,7 +3,7 @@ const kLogin = 'login';
 
 const kHomeData = 'home';
 
-const kAddFavourite = 'favorites';
+const kFavourite = 'favorites';
 
 const kAddCart = 'carts';
 

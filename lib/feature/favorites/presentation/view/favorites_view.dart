@@ -17,8 +17,16 @@ class FavoritesView extends StatelessWidget {
       builder: (context, state) {
         var cubit = FavoritesCubit.get(context);
         return ConditionalBuilder(
-          condition: state is! FavoritesLoadingState,
-          builder: (context) => BuildListViewFavoritesView(cubit: cubit),
+          condition: cubit.favoriteModel != null,
+          builder: (context) =>
+              //state is! FavoritesLoadingState
+              cubit.favoriteModel != null
+                  ? BuildListViewFavoritesView(cubit: cubit)
+                  : Center(
+                      child: Text(
+                      'There are no items in the favorites.',
+                      style: AppStyles.textStyle14.copyWith(color: Colors.grey),
+                    )),
           fallback: (context) => const Center(
             child: CircularProgressIndicator(),
           ),
