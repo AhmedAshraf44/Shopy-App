@@ -22,7 +22,6 @@ class FavoritesRepoImpl extends FavoritesRepo {
 
       return right(FavoriteModel.fromJson(result));
     } catch (e) {
-      print(e.toString());
       if (e is DioException) {
         return left(ServerFailure.formDioError(e));
       }

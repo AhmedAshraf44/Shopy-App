@@ -43,7 +43,6 @@ class FavoritesCubit extends Cubit<FavoritesState> {
       },
       (changeFavoriteData) {
         changeFavoriteModel = changeFavoriteData;
-        print(changeFavoriteData.message);
         if (!changeFavoriteData.status) {
           FavoritesManager.favorites[productId] =
               !FavoritesManager.favorites[productId]!;

@@ -4,6 +4,7 @@ import 'package:shopy_app/core/utils/api_service.dart';
 import 'package:shopy_app/feature/categories/data/repos/categories_repo_impl.dart';
 import 'package:shopy_app/feature/favorites/data/repos/favorites_repo_impl.dart';
 import 'package:shopy_app/feature/home/data/repos/home_repo_impl.dart';
+import 'package:shopy_app/feature/register/data/repos/register_repo_impl.dart';
 import 'package:shopy_app/feature/settings/data/repos/settings_repo_impl.dart';
 
 import '../../feature/login/data/repos/login_repo_impl.dart';
@@ -16,6 +17,9 @@ void setupServiceLocator() {
     getIt.get<ApiService>(),
   ));
   getIt.registerSingleton<LoginRepoImpl>(LoginRepoImpl(
+    getIt.get<ApiService>(),
+  ));
+  getIt.registerSingleton<RegisterRepoImpl>(RegisterRepoImpl(
     getIt.get<ApiService>(),
   ));
   getIt.registerSingleton<CategoriesRepoImpl>(CategoriesRepoImpl(

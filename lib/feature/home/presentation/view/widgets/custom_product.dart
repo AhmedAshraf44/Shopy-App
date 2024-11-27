@@ -80,7 +80,6 @@ class CustomProduct extends StatelessWidget {
                             FavoritesCubit.get(context).changeFavorites(
                               productId: item.id,
                             );
-                            print('sucess ${item.id}');
                           },
                           icon: CircleAvatar(
                             radius: 15,

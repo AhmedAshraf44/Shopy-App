@@ -54,12 +54,16 @@ class ApiService {
     //  required Map<String, String>? data,
     required String? token,
   }) async {
-    var response = await _dio.put('$kBaseUrl$endPoint',
-        options: Options(headers: {
+    var response = await _dio.put(
+      '$kBaseUrl$endPoint',
+      options: Options(
+        headers: {
           'Authorization': token,
           'Content-Type': 'application/json',
           'lang': 'en',
-        }));
+        },
+      ),
+    );
     return response.data;
   }
 }
