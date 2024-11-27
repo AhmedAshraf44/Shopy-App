@@ -10,8 +10,14 @@ final class FavoritesSuccessState extends FavoritesState {}
 
 final class FavoritesFailureState extends FavoritesState {}
 
+final class ChangeFavoritesState extends FavoritesState {}
+
 final class ChangeFavoritesLoadingState extends FavoritesState {}
 
-final class ChangeFavoritesSuccessState extends FavoritesState {}
+final class ChangeFavoritesSuccessState extends FavoritesState {
+  final ChangeFavoriteModel model;
+
+  ChangeFavoritesSuccessState({required this.model});
+}
 
 final class ChangeFavoritesFailureState extends FavoritesState {}

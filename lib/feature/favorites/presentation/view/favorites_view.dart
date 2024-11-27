@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopy_app/core/utils/models/favorites_manager.dart';
 import 'package:shopy_app/feature/categories/presentation/view/widgets/my_divider.dart';
 import 'package:shopy_app/feature/favorites/data/models/favorite_model/datum.dart';
 import 'package:shopy_app/feature/favorites/presentation/manger/cubit/favorites_cubit.dart';
@@ -13,20 +14,20 @@ class FavoritesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FavoritesCubit, FavoritesState>(
+    return BlocConsumer<FavoritesCubit, FavoritesState>(
+      listener: (context, state) {},
       builder: (context, state) {
         var cubit = FavoritesCubit.get(context);
+
         return ConditionalBuilder(
-          condition: cubit.favoriteModel != null,
-          builder: (context) =>
-              //state is! FavoritesLoadingState
-              cubit.favoriteModel != null
-                  ? BuildListViewFavoritesView(cubit: cubit)
-                  : Center(
-                      child: Text(
-                      'There are no items in the favorites.',
-                      style: AppStyles.textStyle14.copyWith(color: Colors.grey),
-                    )),
+          condition: state is! FavoritesLoadingState,
+          builder: (context) => cubit.favoriteModel!.data!.data != []
+              ? BuildListViewFavoritesView(cubit: cubit)
+              : Center(
+                  child: Text(
+                  'There are no items in the favorites.',
+                  style: AppStyles.textStyle14.copyWith(color: Colors.grey),
+                )),
           fallback: (context) => const Center(
             child: CircularProgressIndicator(),
           ),
@@ -102,7 +103,6 @@ class BuildFavoritesView extends StatelessWidget {
                 children: [
                   Text(
                     model.product!.name.toString(),
-                    //item.name,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: AppStyles.textStyle14.copyWith(height: 1.4),
@@ -128,14 +128,20 @@ class BuildFavoritesView extends StatelessWidget {
                       const Spacer(),
                       IconButton(
                         padding: EdgeInsets.zero,
-                        onPressed: () {},
+                        onPressed: () {
+                          FavoritesCubit.get(context)
+                              .changeFavorites(productId: model.product!.id!);
+                        },
                         icon: CircleAvatar(
-                          radius: 20,
-                          backgroundColor: Colors.grey[350],
+                          radius: 15,
+                          backgroundColor:
+                              FavoritesManager.favorites[model.product!.id]!
+                                  ? kPrimaryColor
+                                  : Colors.grey[350],
                           child: const Icon(
                             color: Colors.white,
                             Icons.favorite_border,
-                            // size: 14,
+                            size: 14,
                           ),
                         ),
                       ),

@@ -2,6 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopy_app/feature/home/data/model/categories_model/categories_model.dart';
 import 'package:shopy_app/feature/home/data/model/home_model/home_model.dart';
 import 'package:shopy_app/feature/home/data/repos/home_repo.dart';
+
+import '../../../../../core/utils/models/favorites_manager.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -17,6 +19,8 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeChnageIndexState());
   }
 
+  //Map<int, bool> favorites = {};
+
   Future<void> getHomeData() async {
     emit(HomeLoadingState());
     var result = await homeRepo.getHomeData();
@@ -26,6 +30,11 @@ class HomeCubit extends Cubit<HomeState> {
       },
       (homeData) {
         homeModel = homeData;
+        homeData.data.products.forEach(
+          (element) {
+            FavoritesManager.favorites.addAll({element.id: element.favorites});
+          },
+        );
         emit(HomeSucessState());
       },
     );
