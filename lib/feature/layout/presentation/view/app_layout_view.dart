@@ -9,6 +9,8 @@ import 'package:shopy_app/feature/favorites/presentation/manger/cubit/favorites_
 import 'package:shopy_app/feature/home/data/repos/home_repo_impl.dart';
 import 'package:shopy_app/feature/home/presentation/manger/cubit/home_cubit.dart';
 import 'package:shopy_app/feature/layout/presentation/manger/cubit/app_cubit.dart';
+import 'package:shopy_app/feature/settings/data/repos/settings_repo_impl.dart';
+import 'package:shopy_app/feature/settings/presentation/manger/cubit/settings_cubit.dart';
 
 class AppLayoutView extends StatelessWidget {
   const AppLayoutView({super.key});
@@ -29,6 +31,11 @@ class AppLayoutView extends StatelessWidget {
           create: (context) => FavoritesCubit(
             getIt.get<FavoritesRepoImpl>(),
           )..getFavorites(),
+        ),
+        BlocProvider(
+          create: (context) => SettingsCubit(
+            getIt.get<SettingsRepoImpl>(),
+          )..getSettings(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppState>(

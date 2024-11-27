@@ -13,6 +13,7 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginChangeIconPasswordState());
   }
 
+  var formKey = GlobalKey<FormState>();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   final LoginRepo loginRepo;

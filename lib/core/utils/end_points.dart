@@ -10,3 +10,5 @@ const kAddCart = 'carts';
 const kGetCategories = 'categories';
 
 const kGetProducts = 'products';
+
+const kProfile = 'profile';

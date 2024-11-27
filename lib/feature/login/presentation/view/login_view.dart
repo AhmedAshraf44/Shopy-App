@@ -15,7 +15,7 @@ import '../../../../core/utils/widgets/custom_text_form_field.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
-  static var formKey = GlobalKey<FormState>();
+  //static var formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,11 +26,12 @@ class LoginView extends StatelessWidget {
             if (state is LoginSuccessState) {
               {
                 if (state.model.status == false) {
-                  showToast(text: state.model.message, color: Colors.amber);
+                  showToast(text: state.model.message!, color: Colors.amber);
                 } else {
-                  showToast(text: state.model.message, color: Colors.green);
+                  showToast(text: state.model.message!, color: Colors.green);
                   CacheHelper.setData(
                       key: 'token', value: state.model.data!.token);
+                  token = state.model.data!.token;
                   GoRouter.of(context).push(AppRouter.kHomeLayoutView);
                 }
               }
@@ -41,7 +42,7 @@ class LoginView extends StatelessWidget {
           builder: (context, state) {
             var cubit = LoginCubit.get(context);
             return Form(
-              key: formKey,
+              key: cubit.formKey,
               child: Center(
                 child: SingleChildScrollView(
                   child: Padding(
@@ -81,7 +82,7 @@ class LoginView extends StatelessWidget {
                           },
                           onChanged: (value) {},
                           onFieldSubmitted: (value) async {
-                            if (formKey.currentState!.validate()) {
+                            if (cubit.formKey.currentState!.validate()) {
                               await cubit.loginUser();
                             }
                           },
@@ -108,7 +109,7 @@ class LoginView extends StatelessWidget {
                           },
                           onChanged: (value) {},
                           onFieldSubmitted: (value) async {
-                            if (formKey.currentState!.validate()) {
+                            if (cubit.formKey.currentState!.validate()) {
                               await cubit.loginUser();
                             }
                           },
@@ -142,7 +143,7 @@ class LoginView extends StatelessWidget {
                         CustomButton(
                           text: 'login',
                           onPressed: () async {
-                            if (formKey.currentState!.validate()) {
+                            if (cubit.formKey.currentState!.validate()) {
                               await cubit.loginUser();
                             }
                           },
