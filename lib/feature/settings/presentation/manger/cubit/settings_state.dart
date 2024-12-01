@@ -18,3 +18,13 @@ final class SettingsFailureState extends SettingsState {
 
   const SettingsFailureState({required this.errorMessage});
 }
+
+final class UpdataProfileLoadingState extends SettingsState {}
+
+final class UpdataProfileSuccssState extends SettingsState {}
+
+final class UpdataProfileFailureState extends SettingsState {
+  final String errorMessage;
+
+  const UpdataProfileFailureState({required this.errorMessage});
+}

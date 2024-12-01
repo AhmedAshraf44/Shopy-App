@@ -26,12 +26,16 @@ class ApiService {
     //  required Map<String, String>? data,
     String? token,
   }) async {
-    var response = await _dio.get('$kBaseUrl$endPoint',
-        options: Options(headers: {
+    var response = await _dio.get(
+      '$kBaseUrl$endPoint',
+      options: Options(
+        headers: {
           'Authorization': token,
           'Content-Type': 'application/json',
           'lang': 'en',
-        }));
+        },
+      ),
+    );
     return response.data;
   }
 
@@ -40,22 +44,27 @@ class ApiService {
     //  required Map<String, String>? data,
     required String? token,
   }) async {
-    var response = await _dio.delete('$kBaseUrl$endPoint',
-        options: Options(headers: {
+    var response = await _dio.delete(
+      '$kBaseUrl$endPoint',
+      options: Options(
+        headers: {
           'Authorization': token,
           'Content-Type': 'application/json',
           'lang': 'en',
-        }));
+        },
+      ),
+    );
     return response.data;
   }
 
   Future<Map<String, dynamic>> put({
     required String endPoint,
-    //  required Map<String, String>? data,
+    required Map<String, String>? data,
     required String? token,
   }) async {
     var response = await _dio.put(
       '$kBaseUrl$endPoint',
+      data: data,
       options: Options(
         headers: {
           'Authorization': token,

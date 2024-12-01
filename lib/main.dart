@@ -1,10 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopy_app/bloc_observer.dart';
 import 'package:shopy_app/constants.dart';
 import 'package:shopy_app/core/utils/app_router.dart';
 import 'package:shopy_app/core/utils/cache_helper.dart';
 import 'package:shopy_app/core/utils/service_locator.dart';
+
+import 'feature/favorites/data/repos/favorites_repo_impl.dart';
+import 'feature/favorites/presentation/manger/cubit/favorites_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,10 +36,15 @@ class ShopyApp extends StatelessWidget {
   final String initialRoute;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: AppRouter.router(initialRoute: initialRoute),
-      theme: appThemeData(),
+    return BlocProvider(
+      create: (context) => FavoritesCubit(
+        getIt.get<FavoritesRepoImpl>(),
+      )..getFavorites(),
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        routerConfig: AppRouter.router(initialRoute: initialRoute),
+        theme: appThemeData(),
+      ),
     );
   }
 }

@@ -17,7 +17,7 @@ class BuildListViewFavorites extends StatelessWidget {
     return ListView.separated(
       physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) => BuildListViewFavoritesItem(
-        model: cubit.favoriteModel!.data!.data![index],
+        model: cubit.favoriteModel!.data!.data![index].product!,
       ),
       separatorBuilder: (context, index) => const MyDivider(),
       itemCount: cubit.favoriteModel!.data!.data!.length,

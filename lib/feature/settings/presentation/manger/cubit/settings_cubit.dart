@@ -10,7 +10,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit(this._settingsRepo) : super(SettingsInitialState());
 
   static SettingsCubit get(context) => BlocProvider.of(context);
-
+  var formKey = GlobalKey<FormState>();
   final SettingsRepo _settingsRepo;
   var nameController = TextEditingController();
   var emailController = TextEditingController();
@@ -27,6 +27,29 @@ class SettingsCubit extends Cubit<SettingsState> {
       emailController.text = userData.data!.email;
       phoneController.text = userData.data!.phone;
       return emit(SettingsSuccssState());
+    });
+  }
+
+  Future<void> updataProfile({
+    required String name,
+    required String email,
+    required String phone,
+  }) async {
+    emit(UpdataProfileLoadingState());
+    var result = await _settingsRepo.updataProfile(
+      name: name,
+      email: email,
+      phone: phone,
+    );
+    result.fold((failure) {
+      return emit(
+          UpdataProfileFailureState(errorMessage: failure.errorMessage));
+    }, (userData) {
+      userModel = userData.data;
+      nameController.text = userData.data!.name;
+      emailController.text = userData.data!.email;
+      phoneController.text = userData.data!.phone;
+      return emit(UpdataProfileSuccssState());
     });
   }
 }

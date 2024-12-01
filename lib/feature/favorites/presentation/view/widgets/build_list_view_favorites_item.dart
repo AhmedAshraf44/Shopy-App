@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:shopy_app/feature/favorites/data/models/favorite_model/product.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/models/favorites_manager.dart';
-import '../../../data/models/favorite_model/datum.dart';
 import '../../manger/cubit/favorites_cubit.dart';
 
 class BuildListViewFavoritesItem extends StatelessWidget {
-  const BuildListViewFavoritesItem({super.key, required this.model});
-  final Datum model;
+  const BuildListViewFavoritesItem({
+    super.key,
+    required this.model,
+    this.oldPrice = true,
+  });
+  final Product model;
+  final bool oldPrice;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,12 +27,12 @@ class BuildListViewFavoritesItem extends StatelessWidget {
               alignment: Alignment.bottomLeft,
               children: [
                 Image.network(
-                  '${model.product!.image //  item.image,
+                  '${model.image //  item.image,
                   }',
                   width: 120,
                   height: 120,
                 ),
-                if (model.product!.discount != 0)
+                if (model.discount != 0 && oldPrice)
                   Container(
                     color: Colors.red,
                     child: Padding(
@@ -49,7 +54,7 @@ class BuildListViewFavoritesItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    model.product!.name.toString(),
+                    model.name.toString(),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: AppStyles.textStyle14.copyWith(height: 1.4),
@@ -58,16 +63,16 @@ class BuildListViewFavoritesItem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '${model.product!.price}',
+                        '${model.price}',
                         style: AppStyles.textStyle14
                             .copyWith(color: kPrimaryColor),
                       ),
                       const SizedBox(
                         width: 5,
                       ),
-                      if (model.product!.discount != 0)
+                      if (model.discount != 0 && oldPrice)
                         Text(
-                          '${model.product!.oldPrice}',
+                          '${model.oldPrice}',
                           style: AppStyles.textStyle12.copyWith(
                               color: Colors.grey[400],
                               decoration: TextDecoration.lineThrough),
@@ -77,14 +82,13 @@ class BuildListViewFavoritesItem extends StatelessWidget {
                         padding: EdgeInsets.zero,
                         onPressed: () {
                           FavoritesCubit.get(context)
-                              .changeFavorites(productId: model.product!.id!);
+                              .changeFavorites(productId: model.id!);
                         },
                         icon: CircleAvatar(
                           radius: 15,
-                          backgroundColor:
-                              FavoritesManager.favorites[model.product!.id]!
-                                  ? kPrimaryColor
-                                  : Colors.grey[350],
+                          backgroundColor: FavoritesManager.favorites[model.id]!
+                              ? kPrimaryColor
+                              : Colors.grey[350],
                           child: const Icon(
                             color: Colors.white,
                             Icons.favorite_border,

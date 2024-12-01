@@ -27,4 +27,26 @@ class SettingsRepoImpl extends SettingsRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, LoginModel>> updataProfile({
+    required String name,
+    required String email,
+    required String phone,
+  }) async {
+    try {
+      var result =
+          await _apiService.put(endPoint: kUpdateProfile, token: token, data: {
+        'name': name,
+        'email': email,
+        'phone': phone,
+      });
+      return right(LoginModel.fromJson(result));
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.formDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
 }

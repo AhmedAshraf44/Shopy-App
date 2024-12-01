@@ -5,4 +5,9 @@ import '../../../login/data/model/login_model.dart';
 
 abstract class SettingsRepo {
   Future<Either<Failure, LoginModel>> getSettings();
+  Future<Either<Failure, LoginModel>> updataProfile({
+    required String name,
+    required String email,
+    required String phone,
+  });
 }

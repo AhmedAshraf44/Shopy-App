@@ -14,3 +14,7 @@ const kGetCategories = 'categories';
 const kGetProducts = 'products';
 
 const kProfile = 'profile';
+
+const kUpdateProfile = 'update-profile';
+
+const kSearch = 'products/search';
