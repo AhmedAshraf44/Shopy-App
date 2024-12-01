@@ -1,24 +1,26 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import '../../../../../constants.dart';
-import '../../../data/model/home_model/home_model.dart';
-import '../../manger/cubit/home_cubit.dart';
 
-class BuildCarouselSliderAndIndicator extends StatelessWidget {
-  const BuildCarouselSliderAndIndicator({super.key, required this.item});
-  final HomeModel item;
+import '../../../../../constants.dart';
+import '../../../../../core/utils/models/product_model.dart';
+import '../../manger/product_details_cubit.dart';
+
+class BuildCarouselSliderAndIndicatorProductDatails extends StatelessWidget {
+  const BuildCarouselSliderAndIndicatorProductDatails(
+      {super.key, required this.item});
+  final ProductModel item;
   @override
   Widget build(BuildContext context) {
-    var cubit = HomeCubit.get(context);
+    var cubit = ProductDetailsCubit.get(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
           CarouselSlider(
-              items: item.data.banners
+              items: item.images!
                   .map(
-                    (e) => Image(
-                        width: double.infinity, image: NetworkImage(e.image)),
+                    (e) =>
+                        Image(width: double.infinity, image: NetworkImage(e)),
                   )
                   .toList(),
               options: CarouselOptions(
@@ -40,20 +42,17 @@ class BuildCarouselSliderAndIndicator extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              item.data.banners.length,
-              (index) {
-                return Padding(
-                  padding: const EdgeInsets.only(right: 5),
-                  child: CircleAvatar(
-                    radius: cubit.currentIndex == index ? 6 : 5,
-                    backgroundColor: cubit.currentIndex == index
-                        ? kPrimaryColor
-                        : Colors.grey[350],
-                  ),
-                );
-              },
-            ),
+            children: List.generate(item.images!.length, (index) {
+              return Padding(
+                padding: const EdgeInsets.only(right: 5),
+                child: CircleAvatar(
+                  radius: cubit.currentIndex == index ? 6 : 5,
+                  backgroundColor: cubit.currentIndex == index
+                      ? kPrimaryColor
+                      : Colors.grey[350],
+                ),
+              );
+            }),
           ),
         ],
       ),

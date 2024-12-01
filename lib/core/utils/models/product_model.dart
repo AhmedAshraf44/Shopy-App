@@ -8,17 +8,19 @@ class ProductModel {
   final String description;
   final bool favorites;
   final bool cart;
-
-  const ProductModel(
-      {required this.id,
-      required this.price,
-      required this.oldPrice,
-      required this.discount,
-      required this.image,
-      required this.name,
-      required this.description,
-      required this.favorites,
-      required this.cart});
+  final List<dynamic>? images;
+  const ProductModel({
+    required this.id,
+    required this.price,
+    required this.oldPrice,
+    required this.discount,
+    required this.image,
+    required this.name,
+    required this.description,
+    required this.favorites,
+    required this.cart,
+    required this.images,
+  });
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
       id: json['id'],
@@ -30,6 +32,7 @@ class ProductModel {
       description: json['description'],
       favorites: json['in_favorites'],
       cart: json['in_cart'],
+      images: json['images'] as List<dynamic>?,
     );
   }
 }

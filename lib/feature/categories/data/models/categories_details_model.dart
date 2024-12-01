@@ -1,4 +1,4 @@
-import '../../../home/data/model/home_model/product_model.dart';
+import '../../../../core/utils/models/product_model.dart';
 
 class CategoriesDetailsModel {
   final bool status;

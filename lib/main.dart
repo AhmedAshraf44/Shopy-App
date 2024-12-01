@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shopy_app/bloc_observer.dart';
 import 'package:shopy_app/constants.dart';
+import 'package:shopy_app/core/functions/app_theme_data.dart';
 import 'package:shopy_app/core/utils/app_router.dart';
 import 'package:shopy_app/core/utils/cache_helper.dart';
 import 'package:shopy_app/core/utils/service_locator.dart';
@@ -15,7 +16,7 @@ void main() async {
   setupServiceLocator();
   await CacheHelper.init();
   token = CacheHelper.getData(key: 'token') ?? '';
-  print(token);
+  // print(token);
   bool? onBoarding = CacheHelper.getData(key: 'onBoarding') ?? false;
   late String initialRoute;
   if (onBoarding != null) {
@@ -46,23 +47,4 @@ class ShopyApp extends StatelessWidget {
       ),
     );
   }
-}
-
-ThemeData appThemeData() {
-  return ThemeData(
-      appBarTheme: const AppBarTheme(
-        color: Colors.white,
-      ),
-      fontFamily: 'Inter',
-      progressIndicatorTheme:
-          const ProgressIndicatorThemeData(color: kPrimaryColor),
-      scaffoldBackgroundColor: Colors.white,
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        selectedItemColor: kPrimaryColor,
-      ),
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        backgroundColor: kPrimaryColor,
-      ));
 }
