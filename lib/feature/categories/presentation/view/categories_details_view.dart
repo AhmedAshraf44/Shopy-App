@@ -54,10 +54,9 @@ class CategoriesDetailsViewBody extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: Colors.grey.shade300)),
-                child: Text('lodsssssssssssssss'),
-                //  CustomProduct(
-                //   item: cubit.categoriesDetailsModel!.data.data[index],
-                // ),
+                child: CustomProduct(
+                  item: cubit.categoriesDetailsModel!.data.data[index],
+                ),
               ),
             ),
             fallback: (context) => const Center(

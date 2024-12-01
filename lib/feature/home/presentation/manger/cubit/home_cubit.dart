@@ -30,11 +30,9 @@ class HomeCubit extends Cubit<HomeState> {
       },
       (homeData) {
         homeModel = homeData;
-        homeData.data.products.forEach(
-          (element) {
-            FavoritesManager.favorites.addAll({element.id: element.favorites});
-          },
-        );
+        for (var element in homeData.data.products) {
+          FavoritesManager.favorites.addAll({element.id: element.favorites});
+        }
         emit(HomeSucessState());
       },
     );
